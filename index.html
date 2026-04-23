@@ -1,153 +1,1888 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz Aniversário Mika!</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #ffda79;
-            color: #333;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-            overflow: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Egogero Condominium — by Teagar Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #FF6700;
+    --orange-light: #FF8533;
+    --orange-glow: rgba(255, 103, 0, 0.15);
+    --orange-subtle: rgba(255, 103, 0, 0.08);
+    --tc-dark: #3D3D3D;
+    --dark: #0D0D0D;
+    --dark-2: #141414;
+    --dark-3: #1C1C1C;
+    --dark-4: #242424;
+    --dark-5: #2E2E2E;
+    --white: #F5F3EF;
+    --white-dim: rgba(245, 243, 239, 0.6);
+    --white-faint: rgba(245, 243, 239, 0.12);
+    --border: rgba(245, 243, 239, 0.08);
+    --border-orange: rgba(255, 103, 0, 0.3);
+    --success: #2ECC71;
+    --warning: #F39C12;
+    --info: #3498DB;
+    --mono: 'JetBrains Mono', monospace;
+  }
 
-        h1 {
-            font-size: 3rem;
-            color: #ff5733;
-            margin-bottom: 10px;
-            animation: bounce 1.5s infinite;
-        }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        h2 {
-            font-size: 1.5rem;
-            color: #ffac33;
-            margin-bottom: 20px;
-        }
+  html { scroll-behavior: smooth; }
 
-        #countdown {
-            font-size: 2rem;
-            background-color: #ffac33;
-            padding: 15px;
-            border-radius: 10px;
-            color: white;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
+  body {
+    font-family: 'Sora', sans-serif;
+    background: var(--dark);
+    color: var(--white);
+    line-height: 1.7;
+    font-size: 15px;
+    overflow-x: hidden;
+  }
 
-        button {
-            margin-top: 20px;
-            font-size: 1.5rem;
-            padding: 10px 20px;
-            color: #fff;
-            background-color: #ff5733;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
 
-        button:hover {
-            background-color: #c70039;
-        }
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 3rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-        .balloon {
-            position: absolute;
-            bottom: -150px;
-            background-color: rgba(255, 87, 51, 0.8);
-            border-radius: 50%;
-            width: 60px;
-            height: 80px;
-            animation: floatBalloon 6s ease-in-out infinite;
-        }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
 
-        .balloon:nth-child(2) {
-            background-color: rgba(255, 172, 51, 0.8);
-            animation-duration: 5s;
-            left: 20%;
-        }
+  .nav-logo-mark {
+    width: 32px; height: 32px;
+    background: var(--orange);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 18px;
+    color: #fff;
+    letter-spacing: -1px;
+    line-height: 1;
+    font-family: var(--mono);
+  }
 
-        .balloon:nth-child(3) {
-            background-color: rgba(51, 255, 144, 0.8);
-            animation-duration: 7s;
-            left: 70%;
-        }
+  .nav-logo-text {
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--white);
+    letter-spacing: -0.3px;
+  }
 
-        @keyframes floatBalloon {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-400px); }
-            100% { transform: translateY(0); }
-        }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+  .nav-links a {
+    color: var(--white-dim);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
 
-        #partyButton {
-            display: none;
-        }
-    </style>
+  .nav-links a:hover { color: var(--orange); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 2rem 80px;
+    overflow: hidden;
+  }
+
+  .hero-bg-ring {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -55%);
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    border: 1px solid var(--border-orange);
+    pointer-events: none;
+  }
+
+  .hero-bg-ring::before {
+    content: '';
+    position: absolute;
+    inset: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border-orange);
+  }
+
+  .hero-bg-ring::after {
+    content: '';
+    position: absolute;
+    inset: 80px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, var(--orange-glow) 0%, transparent 70%);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--orange-subtle);
+    border: 1px solid var(--border-orange);
+    color: var(--orange-light);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .hero-badge-dot {
+    width: 6px; height: 6px;
+    background: var(--orange-light);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  h1.hero-title {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2.5px;
+    color: var(--white);
+    max-width: 800px;
+    margin-bottom: 1.5rem;
+  }
+
+  h1.hero-title span {
+    color: var(--orange);
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--white-dim);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .hero-meta-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--orange);
+    letter-spacing: -1px;
+  }
+
+  .hero-meta-label {
+    font-size: 11px;
+    color: var(--white-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+  }
+
+  /* ── SECTION STRUCTURE ── */
+  section {
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .section-desc {
+    font-size: 1rem;
+    color: var(--white-dim);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-pad {
+    padding: 100px 0;
+  }
+
+  /* ── AUDIENCE TAG ── */
+  .audience-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .tag-resident { background: rgba(46,204,113,0.15); color: #2ECC71; border: 1px solid rgba(46,204,113,0.3); }
+  .tag-manager  { background: rgba(52,152,219,0.15); color: #5DADE2; border: 1px solid rgba(52,152,219,0.3); }
+  .tag-tech     { background: rgba(155,89,182,0.15); color: #BB8FCE; border: 1px solid rgba(155,89,182,0.3); }
+  .tag-cost     { background: rgba(243,156,18,0.15); color: #F39C12; border: 1px solid rgba(243,156,18,0.3); }
+  .tag-improve  { background: rgba(232,90,27,0.15);  color: var(--orange-light); border: 1px solid var(--border-orange); }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--dark-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .card:hover {
+    border-color: var(--border-orange);
+    transform: translateY(-3px);
+  }
+
+  .card-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .card-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* ── VERSION SECTION ── */
+  .version-section {
+    border-top: 1px solid var(--border);
+  }
+
+  .version-hero {
+    background: var(--dark-2);
+    border-bottom: 1px solid var(--border);
+    padding: 80px 0;
+  }
+
+  .version-body {
+    padding: 60px 0;
+  }
+
+  /* ── STEP FLOW ── */
+  .step-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .step {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .step:hover { background: var(--white-faint); }
+
+  .step-num {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    background: var(--orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 13px;
+    color: #fff;
+    font-family: var(--mono);
+  }
+
+  .step-content h4 {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.3px;
+  }
+
+  .step-content p {
+    font-size: 14px;
+    color: var(--white-dim);
+    line-height: 1.6;
+  }
+
+  /* ── MOCKUP BOX ── */
+  .mockup-box {
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 2rem 0;
+  }
+
+  .mockup-topbar {
+    background: var(--dark-4);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mockup-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+
+  .mockup-body {
+    padding: 2rem;
+    font-size: 13px;
+  }
+
+  .mockup-screen {
+    background: var(--dark-5);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+
+  .mockup-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--white-dim);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  /* ── FEATURE PILL ── */
+  .feature-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--white-faint);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--white-dim);
+    margin: 3px;
+  }
+
+  .feature-pill-dot {
+    width: 5px; height: 5px;
+    background: var(--orange);
+    border-radius: 50%;
+  }
+
+  /* ── TABLE ── */
+  .pro-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .pro-table thead tr {
+    background: var(--dark-4);
+  }
+
+  .pro-table th {
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--orange);
+    font-weight: 700;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pro-table td {
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--border);
+    color: var(--white-dim);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .pro-table tr:last-child td { border-bottom: none; }
+
+  .pro-table tr:nth-child(even) td {
+    background: rgba(255,255,255,0.015);
+  }
+
+  .pro-table td:first-child {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* ── ENTITY BLOCK ── */
+  .entity-block {
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--orange);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .entity-block h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--orange-light);
+    font-family: var(--mono);
+    letter-spacing: 0.5px;
+  }
+
+  .entity-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    font-size: 12px;
+    color: var(--white-dim);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .entity-field:last-child { border-bottom: none; }
+
+  .entity-field-type {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--orange);
+    background: var(--orange-subtle);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: auto;
+  }
+
+  /* ── STACK ITEM ── */
+  .stack-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    align-items: flex-start;
+  }
+
+  .stack-icon {
+    width: 38px; height: 38px;
+    background: var(--orange-subtle);
+    border: 1px solid var(--border-orange);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .stack-label {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+
+  .stack-desc {
+    font-size: 12px;
+    color: var(--white-dim);
+    line-height: 1.5;
+  }
+
+  /* ── COST CARD ── */
+  .cost-main-card {
+    background: var(--dark-2);
+    border: 1px solid var(--border-orange);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .cost-value {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--orange);
+    letter-spacing: -2px;
+    line-height: 1;
+  }
+
+  .cost-period {
+    font-size: 0.9rem;
+    color: var(--white-dim);
+    margin-top: 0.5rem;
+  }
+
+  .cost-breakdown {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .cost-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+
+  .cost-line:last-child { border-bottom: none; }
+  .cost-line-amount { font-weight: 700; color: var(--orange-light); }
+
+  /* ── IMPROVEMENT ── */
+  .improvement-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--dark-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .improvement-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .improvement-title {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.3px;
+  }
+
+  .improvement-desc {
+    font-size: 13px;
+    color: var(--white-dim);
+    line-height: 1.6;
+  }
+
+  .improvement-tag {
+    display: inline-block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 6px;
+    font-weight: 600;
+  }
+
+  .tag-weakness { background: rgba(231,76,60,0.15); color: #E74C3C; }
+  .tag-suggestion { background: rgba(46,204,113,0.15); color: #2ECC71; }
+  .tag-future { background: rgba(52,152,219,0.15); color: #5DADE2; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-orange), transparent);
+    margin: 3rem 0;
+  }
+
+  /* ── HIGHLIGHT ── */
+  .highlight-box {
+    background: var(--orange-subtle);
+    border: 1px solid var(--border-orange);
+    border-left: 3px solid var(--orange);
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+    font-size: 14px;
+  }
+
+  .highlight-box strong {
+    color: var(--orange-light);
+  }
+
+  /* ── STATUS BADGE ── */
+  .status { display: inline-block; padding: 2px 10px; border-radius: 100px; font-size: 11px; font-weight: 700; }
+  .status-active   { background: rgba(46,204,113,0.2); color: #2ECC71; }
+  .status-used     { background: rgba(52,152,219,0.2); color: #5DADE2; }
+  .status-expired  { background: rgba(149,165,166,0.2); color: #95A5A6; }
+  .status-revoked  { background: rgba(231,76,60,0.2); color: #E74C3C; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark-2);
+    border-top: 1px solid var(--border);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 12px;
+    color: var(--white-dim);
+    letter-spacing: 0.3px;
+  }
+
+  footer .footer-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--orange);
+    letter-spacing: -1px;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── PROSE ── */
+  .prose h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin: 2rem 0 0.75rem;
+    color: var(--white);
+  }
+
+  .prose h3:first-child { margin-top: 0; }
+
+  .prose p {
+    font-size: 14px;
+    color: var(--white-dim);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .prose ul {
+    padding-left: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose ul li {
+    font-size: 14px;
+    color: var(--white-dim);
+    margin-bottom: 0.4rem;
+    line-height: 1.6;
+  }
+
+  .prose ul li::marker { color: var(--orange); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .card-grid-3, .card-grid-2 { grid-template-columns: 1fr; }
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .container { padding: 0 1rem; }
+    .section-pad { padding: 60px 0; }
+  }
+
+  /* ── SECTION ACCENT LINE ── */
+  .version-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .version-number {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--orange);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .version-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border-orange);
+    opacity: 0.5;
+  }
+
+  /* ── CODE BLOCK ── */
+  .code-block {
+    background: var(--dark-4);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: #A9CDE8;
+    line-height: 1.8;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .code-comment { color: var(--white-dim); }
+  .code-key     { color: var(--orange-light); }
+  .code-val     { color: #A9CDE8; }
+  .code-str     { color: #85C1A8; }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--dark-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .toc-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--orange);
+    font-weight: 700;
+    font-family: var(--mono);
+    margin-bottom: 1rem;
+  }
+
+  .toc-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .toc-list a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--white-dim);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+
+  .toc-list a:hover {
+    background: var(--white-faint);
+    color: var(--white);
+  }
+
+  .toc-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--orange);
+    font-weight: 700;
+  }
+
+  /* ── NOTIFICATION PREVIEW ── */
+  .notification-preview {
+    background: var(--dark-4);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1rem 1.2rem;
+    max-width: 320px;
+    font-size: 13px;
+  }
+
+  .notif-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0.5rem;
+  }
+
+  .notif-icon {
+    width: 28px; height: 28px;
+    background: var(--orange);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+  }
+
+  .notif-app {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+
+  .notif-time {
+    font-size: 10px;
+    color: var(--white-dim);
+    margin-left: auto;
+  }
+
+  .notif-body {
+    font-size: 13px;
+    color: var(--white-dim);
+    line-height: 1.5;
+  }
+
+  .notif-code {
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--orange);
+    text-align: center;
+    margin-top: 0.8rem;
+    padding: 0.5rem;
+    background: var(--orange-subtle);
+    border-radius: 8px;
+    border: 1px solid var(--border-orange);
+  }
+</style>
 </head>
 <body>
 
-    <h1>Feliz Aniversário, Mika!</h1>
-    <h2>Contagem regressiva para o seu grande dia:</h2>
+<!-- ── NAVIGATION ── -->
+<nav>
+  <a href="#" class="nav-logo">
+    <!-- TC Logo SVG — Teagar Company -->
 
-    <div id="countdown"></div>
+    <img src="./svg/TC LOGO.svg" alt="Descrição da imagem" width="150" height="150" style="flex-shrink:0;">
+    <div style="display:flex; flex-direction:column; gap:0;">
+      <span style="font-weight:800; font-size:16px; color:var(--white); letter-spacing:-0.5px; line-height:1.1;">Egogero <span style="color:var(--orange);">Condominium</span></span>
+      <span style="font-size:9px; color:var(--white-dim); letter-spacing:1.5px; text-transform:uppercase; font-weight:500; font-family:var(--mono);">by Teagar Company</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#moradores">Moradores</a></li>
+    <li><a href="#gestores">Gestores</a></li>
+    <li><a href="#tecnico">Técnico</a></li>
+    <li><a href="#custos">Custos</a></li>
+    <li><a href="#melhorias">Melhorias</a></li>
+  </ul>
+</nav>
 
-    <button id="partyButton">Vamos começar a festa!</button>
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-bg-ring"></div>
 
-    <div class="balloon" style="left: 10%;"></div>
-    <div class="balloon"></div>
-    <div class="balloon" style="left: 80%;"></div>
+  <!-- Teagar Company badge -->
+  <div style="display:flex; align-items:center; gap:10px; margin-bottom:1.5rem;">
+    <img src="./svg/TC LOGO.svg" alt="Descrição da imagem" width="100" height="100" style="flex-shrink:0;">
+    <span style="font-size:11px; color:var(--white-dim); font-family:var(--mono); letter-spacing:1.5px; text-transform:uppercase;">Teagar Company</span>
+    <span style="width:1px; height:14px; background:var(--border); display:inline-block;"></span>
+    <span style="font-size:11px; color:var(--white-dim); font-family:var(--mono); letter-spacing:1.5px; text-transform:uppercase;">Soluções em Automação e Gestão</span>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <div class="hero-badge">
+    <div class="hero-badge-dot"></div>
+    Sistema SaaS — Controle de Acesso para Condomínios
+  </div>
+  <h1 class="hero-title">Ego administro.<br><span>Tu entras com segurança.</span></h1>
+  <p class="hero-subtitle"><strong style="color:var(--white);">Egogero Condominium</strong> — do latim <em>"ego gero"</em>, "eu administro" — é a plataforma multi-condomínio de controle de acesso por convites digitais da Teagar Company. Segura, moderna e pronta para escalar.</p>
 
-    <script>
-        function updateCountdown() {
-            var birthday = new Date("September 23, 2025 00:00:00").getTime();
-            var now = new Date().getTime();
-            var distance = birthday - now;
+  <!-- Teagar Company description strip -->
+  <div style="margin: 2rem auto 2rem; max-width:620px; background:rgba(242,101,34,0.06); border:1px solid rgba(242,101,34,0.2); border-radius:12px; padding:1rem 1.5rem; text-align:left; display:flex; gap:1rem; align-items:flex-start;">
+    <img src="./svg/TC LOGO.svg" alt="Descrição da imagem" width="150" height="150" style="flex-shrink:0; margin-top:2px;">
+    <div>
+      <div style="font-size:11px; color:var(--orange); font-weight:700; letter-spacing:1.5px; text-transform:uppercase; font-family:var(--mono); margin-bottom:4px;">Teagar Company</div>
+      <div style="font-size:13px; color:var(--white-dim); line-height:1.6;">Especializada em soluções tecnológicas para <strong style="color:var(--white);">automação de processos e gestão operacional</strong> — ajudando empresas e instituições a ganharem eficiência, controle e escalabilidade.</div>
+    </div>
+  </div>
 
-            if (distance <= 0) {
-                document.getElementById("countdown").innerHTML = "Feliz Aniversário, Mika!";
-                document.getElementById("partyButton").style.display = "inline-block";
-            } else {
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="hero-meta-value">6</span>
+      <span class="hero-meta-label">Dígitos por token</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-value">4</span>
+      <span class="hero-meta-label">Níveis de acesso</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-value">∞</span>
+      <span class="hero-meta-label">Condomínios suportados</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-value">LGPD</span>
+      <span class="hero-meta-label">Em conformidade</span>
+    </div>
+  </div>
+</div>
 
-                document.getElementById("countdown").innerHTML = days + " dias, " + hours + " horas, " + minutes + " minutos e " + seconds + " segundos";
-            }
-        }
+<!-- ── TOC ── -->
+<div class="container">
+  <div class="toc">
+    <div class="toc-title">Índice do Documento</div>
+    <ul class="toc-list">
+      <li><a href="#moradores"><span class="toc-num">01</span>Versão para Moradores</a></li>
+      <li><a href="#gestores"><span class="toc-num">02</span>Versão para Gestores</a></li>
+      <li><a href="#tecnico"><span class="toc-num">03</span>Documentação Técnica</a></li>
+      <li><a href="#custos"><span class="toc-num">04</span>Estimativa de Custos</a></li>
+      <li><a href="#melhorias"><span class="toc-num">05</span>Sugestões de Melhoria</a></li>
+    </ul>
+  </div>
+</div>
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+<!-- ════════════════════════════════════════════
+     VERSÃO 01 — MORADORES
+════════════════════════════════════════════ -->
+<section id="moradores" class="version-section section-pad">
+  <div class="container">
+    <div class="version-label">
+      <span class="version-number">01 — Versão Moradores</span>
+      <div class="version-line"></div>
+    </div>
 
-        function speakMessage() {
-            var message = "Feliz aniversário, Mika! Que você continue sendo a pessoa incrível que você é. Prepare-se para o melhor bolo de todos os tempos!";
-            var synth = window.speechSynthesis;
-            var utterance = new SpeechSynthesisUtterance(message);
-            utterance.lang = 'pt-BR';
-            synth.speak(utterance);
-        }
+    <div class="section-header">
+      <div class="audience-tag tag-resident">👥 Para Moradores</div>
+      <h2 class="section-title">Convidar alguém nunca foi<br>tão simples.</h2>
+      <p class="section-desc">Esqueça os interfonemas, as listas de papel e os constrangimentos na portaria. Com o Egogero Condominium, você controla quem entra com o toque de um botão.</p>
+    </div>
 
-        document.getElementById("partyButton").addEventListener('click', function() {
-            speakMessage();
-            alert("Que a festa comece!");
-            document.body.style.backgroundColor = '#f54291';
-        });
-    </script>
+    <!-- BENEFÍCIOS -->
+    <div class="card-grid-3" style="margin-bottom: 4rem;">
+      <div class="card">
+        <div style="font-size:2rem; margin-bottom:1rem;">🔑</div>
+        <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; letter-spacing:-0.3px;">Convite instantâneo</h3>
+        <p style="font-size:13px; color:var(--white-dim); line-height:1.6;">Gere um código de 6 dígitos em menos de 30 segundos. Envie por WhatsApp, SMS ou e-mail. Pronto.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:2rem; margin-bottom:1rem;">⏱️</div>
+        <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; letter-spacing:-0.3px;">Acesso com prazo definido</h3>
+        <p style="font-size:13px; color:var(--white-dim); line-height:1.6;">Você define até quando o código é válido. Depois disso, expira automaticamente — sem precisar lembrar de revogar.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:2rem; margin-bottom:1rem;">📣</div>
+        <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; letter-spacing:-0.3px;">Notificação de entrada</h3>
+        <p style="font-size:13px; color:var(--white-dim); line-height:1.6;">Você recebe um aviso no momento exato em que seu visitante entra no condomínio. Sem surpresas.</p>
+      </div>
+    </div>
+
+    <!-- FLUXO PASSO A PASSO -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-bottom: 3rem;">
+      <div>
+        <h3 style="font-size:1.4rem; font-weight:800; letter-spacing:-0.8px; margin-bottom:2rem;">Como convidar alguém</h3>
+        <div class="step-flow">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>Abra o Egogero</h4>
+              <p>Acesse pelo celular ou computador. Sua conta está vinculada ao seu apartamento ou unidade.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>Toque em "Novo convite"</h4>
+              <p>Escolha um convidado já cadastrado na sua lista ou adicione um novo rapidamente.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>Defina o tipo de visita</h4>
+              <p>Visitante comum, prestador de serviço ou entregador. Cada tipo tem tratamento adequado na portaria.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>Escolha a validade</h4>
+              <p>O convite pode valer horas ou dias. Você tem controle total do prazo de acesso.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <h4>Envie o código</h4>
+              <p>O sistema envia automaticamente por e-mail ou SMS. Ou você copia e manda onde quiser.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">6</div>
+            <div class="step-content">
+              <h4>Receba a confirmação</h4>
+              <p>Quando seu visitante entrar, você é notificado em tempo real. Simples assim.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOCKUP VISUAL -->
+      <div>
+        <h3 style="font-size:1.4rem; font-weight:800; letter-spacing:-0.8px; margin-bottom:2rem;">Como o visitante usa</h3>
+        <div class="mockup-box">
+          <div class="mockup-topbar">
+            <div class="mockup-dot" style="background:#FF5F57;"></div>
+            <div class="mockup-dot" style="background:#FFBD2E;"></div>
+            <div class="mockup-dot" style="background:#28C840;"></div>
+            <span style="margin-left:8px; font-size:11px; color:var(--white-dim); font-family:var(--mono);">Portaria — Tela de Validação</span>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-label">Monitor da Portaria</div>
+            <div class="mockup-screen">
+              <div style="text-align:center; margin-bottom:1rem; font-size:14px; color:var(--white);">Bem-vindo ao Condomínio</div>
+              <div style="text-align:center; margin-bottom:0.5rem; font-size:11px; color:var(--white-dim);">Digite o código de 6 dígitos abaixo</div>
+              <div style="display:flex; justify-content:center; gap:8px; margin:1rem 0;">
+                <div style="width:36px;height:44px;background:var(--dark-5);border:1px solid var(--orange);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:var(--white);">4</div>
+                <div style="width:36px;height:44px;background:var(--dark-5);border:1px solid var(--orange);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:var(--white);">8</div>
+                <div style="width:36px;height:44px;background:var(--dark-5);border:1px solid var(--orange);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:var(--white);">3</div>
+                <div style="width:36px;height:44px;background:var(--dark-5);border:1px solid var(--orange);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:var(--white);">9</div>
+                <div style="width:36px;height:44px;background:var(--dark-5);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:var(--white-dim);">_</div>
+                <div style="width:36px;height:44px;background:var(--dark-5);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:var(--white-dim);">_</div>
+              </div>
+              <div style="text-align:center; font-size:11px; color:var(--white-dim);">ou apresente seu QR Code</div>
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+              <div class="mockup-label">Mensagem que o visitante recebe</div>
+              <div class="notification-preview" style="max-width:100%;">
+                <div class="notif-header">
+                  <div class="notif-icon">🏢</div>
+                  <span class="notif-app">Egogero</span>
+                  <span class="notif-time">agora</span>
+                </div>
+                <div class="notif-body">Seu acesso ao <strong>Cond. Solar das Flores</strong> foi gerado por <strong>Carlos Silva</strong>. Válido até 22/04 às 20h.</div>
+                <div class="notif-code">483921</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top:1.5rem;">
+          <strong>💡 Dica:</strong> Você pode cancelar qualquer convite a qualquer momento direto pelo app, mesmo depois de enviado.
+        </div>
+      </div>
+    </div>
+
+    <!-- TIPOS DE CONVIDADO -->
+    <h3 style="font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; margin-bottom:1.5rem;">Tipos de acesso que você pode conceder</h3>
+    <div class="card-grid-3" style="margin-bottom:2rem;">
+      <div class="card" style="border-top: 2px solid #2ECC71;">
+        <div style="font-size:1.5rem; margin-bottom:0.8rem;">🧑‍🤝‍🧑</div>
+        <h4 style="font-weight:700; margin-bottom:0.5rem;">Visitante</h4>
+        <p style="font-size:13px; color:var(--white-dim);">Amigos e familiares. Acesso padrão por pedestre ou veículo, com hora de expiração definida por você.</p>
+      </div>
+      <div class="card" style="border-top: 2px solid #F39C12;">
+        <div style="font-size:1.5rem; margin-bottom:0.8rem;">🔧</div>
+        <h4 style="font-weight:700; margin-bottom:0.5rem;">Prestador</h4>
+        <p style="font-size:13px; color:var(--white-dim);">Encanador, eletricista, diarista. Acesso identificado com tipo de serviço registrado no log.</p>
+      </div>
+      <div class="card" style="border-top: 2px solid #E85A1B;">
+        <div style="font-size:1.5rem; margin-bottom:0.8rem;">📦</div>
+        <h4 style="font-weight:700; margin-bottom:0.5rem;">Entregador</h4>
+        <p style="font-size:13px; color:var(--white-dim);">IFood, Mercado Livre, Correios. Código de uso único e curta duração para máxima segurança.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     VERSÃO 02 — GESTORES / SÍNDICOS
+════════════════════════════════════════════ -->
+<section id="gestores" class="version-section section-pad" style="background:var(--dark-2);">
+  <div class="container">
+    <div class="version-label">
+      <span class="version-number">02 — Versão Gestores</span>
+      <div class="version-line"></div>
+    </div>
+
+    <div class="section-header">
+      <div class="audience-tag tag-manager">🏢 Para Síndicos e Gestores</div>
+      <h2 class="section-title">Controle total.<br>Responsabilidade zero com papel.</h2>
+      <p class="section-desc">O Egogero elimina o caos operacional da portaria e entrega auditoria completa, em tempo real, por painel web.</p>
+    </div>
+
+    <!-- MÉTRICAS / VALOR -->
+    <div class="card-grid-3" style="margin-bottom:4rem;">
+      <div class="card" style="text-align:center;">
+        <div style="font-size:2.5rem; font-weight:800; color:var(--orange); letter-spacing:-1px; margin-bottom:0.4rem;">100%</div>
+        <div style="font-size:13px; color:var(--white-dim);">dos acessos rastreados e auditados</div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:2.5rem; font-weight:800; color:var(--orange); letter-spacing:-1px; margin-bottom:0.4rem;">0</div>
+        <div style="font-size:13px; color:var(--white-dim);">planilhas, cadernos ou fichas em papel</div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:2.5rem; font-weight:800; color:var(--orange); letter-spacing:-1px; margin-bottom:0.4rem;">24/7</div>
+        <div style="font-size:13px; color:var(--white-dim);">disponibilidade do sistema, sem depender do porteiro</div>
+      </div>
+    </div>
+
+    <!-- PILARES DE VALOR -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:4rem;" class="responsive-grid">
+
+      <div>
+        <h3 style="font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; margin-bottom:1.5rem;">Controle e Segurança</h3>
+        <div class="improvement-item">
+          <div class="improvement-icon">🔒</div>
+          <div>
+            <div class="improvement-title">Acesso baseado em convite pessoal</div>
+            <div class="improvement-desc">Ninguém entra sem que um morador tenha gerado e enviado um token. O sistema não permite acessos não autorizados — nem com persuasão ao porteiro.</div>
+          </div>
+        </div>
+        <div class="improvement-item">
+          <div class="improvement-icon">⚡</div>
+          <div>
+            <div class="improvement-title">Revogação imediata</div>
+            <div class="improvement-desc">Qualquer morador pode cancelar um convite antes do uso. O síndico pode revogar acessos de qualquer unidade em situações de emergência.</div>
+          </div>
+        </div>
+        <div class="improvement-item">
+          <div class="improvement-icon">📊</div>
+          <div>
+            <div class="improvement-title">Dashboard em tempo real</div>
+            <div class="improvement-desc">Veja quem entrou hoje, quantos convites foram gerados, quais tentativas foram negadas e muito mais — tudo em um painel acessível do celular.</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; margin-bottom:1.5rem;">Eficiência Operacional</h3>
+        <div class="improvement-item">
+          <div class="improvement-icon">🧾</div>
+          <div>
+            <div class="improvement-title">Fim do livro de visitantes</div>
+            <div class="improvement-desc">Todo acesso fica registrado digitalmente com data, hora, tipo, resultado e qual morador gerou o convite. Auditável a qualquer momento.</div>
+          </div>
+        </div>
+        <div class="improvement-item">
+          <div class="improvement-icon">🤖</div>
+          <div>
+            <div class="improvement-title">Portaria auto-gerenciada</div>
+            <div class="improvement-desc">O visitante digita o código na tela da portaria e a liberação é automática. O porteiro foca em monitoramento, não em atender telefonemas.</div>
+          </div>
+        </div>
+        <div class="improvement-item">
+          <div class="improvement-icon">⚖️</div>
+          <div>
+            <div class="improvement-title">LGPD nativamente</div>
+            <div class="improvement-desc">Coleta mínima de dados, soft delete, histórico por IDs. O condomínio está protegido juridicamente desde o primeiro acesso.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASOS DE USO REAIS -->
+    <h3 style="font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; margin-bottom:1.5rem;">Casos de uso reais</h3>
+    <div class="pro-table" style="margin-bottom:3rem;">
+      <table class="pro-table" style="width:100%;">
+        <thead>
+          <tr>
+            <th>Situação</th>
+            <th>Sem Egogero</th>
+            <th>Com Egogero</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Entregador chega</td>
+            <td>Porteiro liga pro morador, espera atender, faz anotação manual</td>
+            <td>Entregador digita o código de uso único. Acesso liberado ou negado automaticamente</td>
+          </tr>
+          <tr>
+            <td>Prestador de serviço</td>
+            <td>Porteiro guarda documento, faz cópia, anota no caderno</td>
+            <td>Morador gera código com validade de 2 horas. Prestador entra sem fila</td>
+          </tr>
+          <tr>
+            <td>Festa na unidade</td>
+            <td>Lista de nomes na portaria, confusão, atrasos</td>
+            <td>Morador envia código único para cada convidado; todos entram com autonomia</td>
+          </tr>
+          <tr>
+            <td>Síndico quer relatório</td>
+            <td>Solicita caderno ao porteiro, digitaliza manualmente</td>
+            <td>Acessa o dashboard, filtra por período e exporta</td>
+          </tr>
+          <tr>
+            <td>Moradora em viagem</td>
+            <td>Precisa avisar o porteiro por telefone</td>
+            <td>Gera o convite para a diarista pelo celular, de qualquer lugar do mundo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- AUDITORIA -->
+    <h3 style="font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; margin-bottom:1.5rem;">Registro de auditoria — o que é capturado</h3>
+    <div class="card-grid-2">
+      <div>
+        <div class="cost-line"><span>Quem gerou o convite</span><span style="color:var(--success); font-size:13px;">✓ Registrado</span></div>
+        <div class="cost-line"><span>Data e hora da entrada</span><span style="color:var(--success); font-size:13px;">✓ Registrado</span></div>
+        <div class="cost-line"><span>Tipo de acesso (pedestre/veículo)</span><span style="color:var(--success); font-size:13px;">✓ Registrado</span></div>
+        <div class="cost-line"><span>Resultado (permitido/negado)</span><span style="color:var(--success); font-size:13px;">✓ Registrado</span></div>
+      </div>
+      <div>
+        <div class="cost-line"><span>Tipo de visitante</span><span style="color:var(--success); font-size:13px;">✓ Registrado</span></div>
+        <div class="cost-line"><span>Status do convite</span>
+          <span style="display:flex; gap:4px; flex-wrap:wrap; justify-content:flex-end;">
+            <span class="status status-active">ativo</span>
+            <span class="status status-used">usado</span>
+            <span class="status status-expired">expirado</span>
+            <span class="status status-revoked">revogado</span>
+          </span>
+        </div>
+        <div class="cost-line"><span>Unidade do morador</span><span style="color:var(--success); font-size:13px;">✓ Registrado</span></div>
+        <div class="cost-line"><span>Tentativas inválidas</span><span style="color:var(--success); font-size:13px;">✓ Registrado</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     VERSÃO 03 — TÉCNICA
+════════════════════════════════════════════ -->
+<section id="tecnico" class="version-section section-pad">
+  <div class="container">
+    <div class="version-label">
+      <span class="version-number">03 — Documentação Técnica</span>
+      <div class="version-line"></div>
+    </div>
+
+    <div class="section-header">
+      <div class="audience-tag tag-tech">⚙️ Para Desenvolvedores e Arquitetos</div>
+      <h2 class="section-title">Arquitetura pensada<br>para escalar.</h2>
+      <p class="section-desc">Visão completa do sistema: componentes, entidades, stack sugerida, segurança e estratégia de deployment.</p>
+    </div>
+
+    <!-- ARQUITETURA GERAL -->
+    <h3 style="font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; margin-bottom:1.5rem;">Visão Geral da Arquitetura</h3>
+
+    <div class="mockup-box" style="margin-bottom:3rem;">
+      <div class="mockup-topbar">
+        <div class="mockup-dot" style="background:#FF5F57;"></div>
+        <div class="mockup-dot" style="background:#FFBD2E;"></div>
+        <div class="mockup-dot" style="background:#28C840;"></div>
+        <span style="margin-left:8px; font-size:11px; color:var(--white-dim); font-family:var(--mono);">Diagrama de Componentes — PortaFácil</span>
+      </div>
+      <div style="padding:2rem; display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; text-align:center; font-size:12px;">
+        <!-- Camada 1 -->
+        <div style="grid-column:span 4; font-family:var(--mono); font-size:10px; color:var(--orange); text-transform:uppercase; letter-spacing:2px; margin-bottom:0.5rem;">Clientes (Interfaces)</div>
+        <div style="background:var(--dark-4); border:1px solid var(--border-orange); border-radius:10px; padding:1rem;">
+          <div style="font-size:1.2rem; margin-bottom:0.4rem;">🌐</div>
+          <div style="font-weight:700; margin-bottom:0.2rem;">Web App</div>
+          <div style="color:var(--white-dim); font-size:11px;">Moradores (React/Next.js)</div>
+        </div>
+        <div style="background:var(--dark-4); border:1px solid var(--border-orange); border-radius:10px; padding:1rem;">
+          <div style="font-size:1.2rem; margin-bottom:0.4rem;">📱</div>
+          <div style="font-weight:700; margin-bottom:0.2rem;">App Mobile</div>
+          <div style="color:var(--white-dim); font-size:11px;">iOS / Android (futuro)</div>
+        </div>
+        <div style="background:var(--dark-4); border:1px solid var(--border-orange); border-radius:10px; padding:1rem;">
+          <div style="font-size:1.2rem; margin-bottom:0.4rem;">🖥️</div>
+          <div style="font-weight:700; margin-bottom:0.2rem;">Portaria UI</div>
+          <div style="color:var(--white-dim); font-size:11px;">Fullscreen (tablet/monitor)</div>
+        </div>
+        <div style="background:var(--dark-4); border:1px solid var(--border-orange); border-radius:10px; padding:1rem;">
+          <div style="font-size:1.2rem; margin-bottom:0.4rem;">🏗️</div>
+          <div style="font-weight:700; margin-bottom:0.2rem;">Admin Panel</div>
+          <div style="color:var(--white-dim); font-size:11px;">Provedor / Síndico</div>
+        </div>
+
+        <!-- Seta -->
+        <div style="grid-column:span 4; text-align:center; color:var(--border-orange); font-size:18px; margin:0.3rem 0;">↕</div>
+
+        <!-- Camada 2 -->
+        <div style="grid-column:span 4; font-family:var(--mono); font-size:10px; color:var(--orange); text-transform:uppercase; letter-spacing:2px; margin-bottom:0.5rem;">API Gateway + Backend</div>
+        <div style="grid-column:span 4; background:var(--dark-4); border:1px solid var(--border); border-radius:10px; padding:1rem; display:grid; grid-template-columns:repeat(4,1fr); gap:0.8rem;">
+          <div style="background:var(--dark-5); border-radius:8px; padding:0.8rem;">
+            <div style="font-weight:600; font-size:12px; margin-bottom:4px;">Auth Service</div>
+            <div style="color:var(--white-dim); font-size:11px;">JWT / RBAC / Multi-tenant</div>
+          </div>
+          <div style="background:var(--dark-5); border-radius:8px; padding:0.8rem;">
+            <div style="font-weight:600; font-size:12px; margin-bottom:4px;">Invite Service</div>
+            <div style="color:var(--white-dim); font-size:11px;">Token gen. / Validação / Expiração</div>
+          </div>
+          <div style="background:var(--dark-5); border-radius:8px; padding:0.8rem;">
+            <div style="font-weight:600; font-size:12px; margin-bottom:4px;">Notification Service</div>
+            <div style="color:var(--white-dim); font-size:11px;">SMS / E-mail / Push (websocket)</div>
+          </div>
+          <div style="background:var(--dark-5); border-radius:8px; padding:0.8rem;">
+            <div style="font-weight:600; font-size:12px; margin-bottom:4px;">Audit Service</div>
+            <div style="color:var(--white-dim); font-size:11px;">Registro de logs imutáveis</div>
+          </div>
+        </div>
+
+        <!-- Seta -->
+        <div style="grid-column:span 4; text-align:center; color:var(--border-orange); font-size:18px; margin:0.3rem 0;">↕</div>
+
+        <!-- Camada 3 -->
+        <div style="grid-column:span 4; font-family:var(--mono); font-size:10px; color:var(--orange); text-transform:uppercase; letter-spacing:2px; margin-bottom:0.5rem;">Persistência + Infraestrutura</div>
+        <div style="background:var(--dark-4); border:1px solid var(--border); border-radius:10px; padding:1rem;">
+          <div style="font-size:1.2rem; margin-bottom:0.4rem;">🗄️</div>
+          <div style="font-weight:700; margin-bottom:0.2rem;">PostgreSQL</div>
+          <div style="color:var(--white-dim); font-size:11px;">Dados relacionais</div>
+        </div>
+        <div style="background:var(--dark-4); border:1px solid var(--border); border-radius:10px; padding:1rem;">
+          <div style="font-size:1.2rem; margin-bottom:0.4rem;">⚡</div>
+          <div style="font-weight:700; margin-bottom:0.2rem;">Redis</div>
+          <div style="color:var(--white-dim); font-size:11px;">Cache + Token store</div>
+        </div>
+        <div style="background:var(--dark-4); border:1px solid var(--border); border-radius:10px; padding:1rem;">
+          <div style="font-size:1.2rem; margin-bottom:0.4rem;">📨</div>
+          <div style="font-weight:700; margin-bottom:0.2rem;">Message Queue</div>
+          <div style="color:var(--white-dim); font-size:11px;">BullMQ / RabbitMQ</div>
+        </div>
+        <div style="background:var(--dark-4); border:1px solid var(--border); border-radius:10px; padding:1rem;">
+          <div style="font-size:1.2rem; margin-bottom:0.4rem;">☁️</div>
+          <div style="font-weight:700; margin-bottom:0.2rem;">Object Storage</div>
+          <div style="color:var(--white-dim); font-size:11px;">Logs / QR Codes (S3)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STACK SUGERIDO -->
+    <h3 style="font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; margin-bottom:1.5rem;">Stack Tecnológico Sugerido</h3>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:3rem;">
+      <div class="stack-item">
+        <div class="stack-icon">🔧</div>
+        <div>
+          <div class="stack-label">Backend</div>
+          <div class="stack-desc">Node.js com NestJS — estrutura modular, injeção de dependências, decorators para RBAC. Alternativa: Go para performance máxima.</div>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-icon">🌐</div>
+        <div>
+          <div class="stack-label">Frontend Web</div>
+          <div class="stack-desc">Next.js 14+ com App Router — SSR para SEO, RSC para performance. TailwindCSS para estilização. shadcn/ui como base de componentes.</div>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-icon">🗄️</div>
+        <div>
+          <div class="stack-label">Banco de Dados</div>
+          <div class="stack-desc">PostgreSQL com Prisma ORM — multi-tenant via schema isolation ou row-level security. Redis para tokens e rate-limiting.</div>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-icon">🔔</div>
+        <div>
+          <div class="stack-label">Notificações</div>
+          <div class="stack-desc">Twilio para SMS, Resend/SendGrid para e-mail. WebSockets (Socket.io) para push em tempo real na web. Expo Push para app mobile futuro.</div>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-icon">🔑</div>
+        <div>
+          <div class="stack-label">Autenticação</div>
+          <div class="stack-desc">JWT com refresh tokens de curta duração. NextAuth / Auth.js no frontend. Rate limiting por IP para proteção contra brute-force no painel da portaria.</div>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-icon">☁️</div>
+        <div>
+          <div class="stack-label">Infraestrutura</div>
+          <div class="stack-desc">Docker + Docker Compose em desenvolvimento. Kubernetes ou Railway/Render para produção. CI/CD via GitHub Actions. Supabase como opção BaaS simplificada.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENTIDADES -->
+    <h3 style="font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; margin-bottom:1.5rem;">Estrutura de Dados — Entidades e Campos</h3>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; margin-bottom:3rem;">
+
+      <div class="entity-block">
+        <h4>Condominium</h4>
+        <div class="entity-field">id <span class="entity-field-type">uuid PK</span></div>
+        <div class="entity-field">name <span class="entity-field-type">string</span></div>
+        <div class="entity-field">responsible_name <span class="entity-field-type">string</span></div>
+        <div class="entity-field">type <span class="entity-field-type">enum</span></div>
+        <div class="entity-field">created_at <span class="entity-field-type">timestamp</span></div>
+        <div class="entity-field">deleted_at <span class="entity-field-type">timestamp?</span></div>
+        <div class="entity-field">provider_id <span class="entity-field-type">uuid FK</span></div>
+      </div>
+
+      <div class="entity-block">
+        <h4>Resident</h4>
+        <div class="entity-field">id <span class="entity-field-type">uuid PK</span></div>
+        <div class="entity-field">name <span class="entity-field-type">string</span></div>
+        <div class="entity-field">unit_address <span class="entity-field-type">string</span></div>
+        <div class="entity-field">condominium_id <span class="entity-field-type">uuid FK</span></div>
+        <div class="entity-field">user_id <span class="entity-field-type">uuid FK</span></div>
+        <div class="entity-field">created_at <span class="entity-field-type">timestamp</span></div>
+        <div class="entity-field">deleted_at <span class="entity-field-type">timestamp?</span></div>
+      </div>
+
+      <div class="entity-block">
+        <h4>Guest</h4>
+        <div class="entity-field">id <span class="entity-field-type">uuid PK</span></div>
+        <div class="entity-field">name <span class="entity-field-type">string</span></div>
+        <div class="entity-field">email <span class="entity-field-type">string?</span></div>
+        <div class="entity-field">phone <span class="entity-field-type">string?</span></div>
+        <div class="entity-field">resident_id <span class="entity-field-type">uuid FK</span></div>
+        <div class="entity-field">created_at <span class="entity-field-type">timestamp</span></div>
+        <div class="entity-field">deleted_at <span class="entity-field-type">timestamp?</span></div>
+      </div>
+
+      <div class="entity-block">
+        <h4>Invite</h4>
+        <div class="entity-field">id <span class="entity-field-type">uuid PK</span></div>
+        <div class="entity-field">token <span class="entity-field-type">string(6) unique</span></div>
+        <div class="entity-field">guest_id <span class="entity-field-type">uuid FK</span></div>
+        <div class="entity-field">resident_id <span class="entity-field-type">uuid FK</span></div>
+        <div class="entity-field">visitor_type <span class="entity-field-type">enum</span></div>
+        <div class="entity-field">expires_at <span class="entity-field-type">timestamp</span></div>
+        <div class="entity-field">status <span class="entity-field-type">enum</span></div>
+        <div class="entity-field">used_at <span class="entity-field-type">timestamp?</span></div>
+      </div>
+
+      <div class="entity-block" style="grid-column: span 2;">
+        <h4>AccessLog</h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 1rem;">
+          <div class="entity-field">id <span class="entity-field-type">uuid PK</span></div>
+          <div class="entity-field">invite_id <span class="entity-field-type">uuid FK</span></div>
+          <div class="entity-field">attempted_at <span class="entity-field-type">timestamp</span></div>
+          <div class="entity-field">access_type <span class="entity-field-type">enum(foot/vehicle)</span></div>
+          <div class="entity-field">result <span class="entity-field-type">enum(allowed/denied)</span></div>
+          <div class="entity-field">denial_reason <span class="entity-field-type">string?</span></div>
+          <div class="entity-field">token_input <span class="entity-field-type">string (hashed)</span></div>
+          <div class="entity-field">ip_address <span class="entity-field-type">string</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SEGURANÇA -->
+    <h3 style="font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; margin-bottom:1.5rem;">Considerações de Segurança</h3>
+    <div class="card-grid-2" style="margin-bottom:3rem;">
+      <div class="card">
+        <h4 style="font-weight:700; margin-bottom:0.8rem; color:var(--orange-light);">Tokens e Autenticação</h4>
+        <div class="prose">
+          <ul>
+            <li>Tokens de 6 dígitos gerados com CSPRNG (não Math.random)</li>
+            <li>Rate limiting: máximo de 5 tentativas inválidas por IP/minuto na portaria</li>
+            <li>Tokens expiram no banco após uso único — não podem ser reutilizados</li>
+            <li>JWT com expiração curta (15min) + refresh token rotacionado</li>
+            <li>Autenticação por papel: RBAC com permissões granulares por nível</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <h4 style="font-weight:700; margin-bottom:0.8rem; color:var(--orange-light);">Dados e LGPD</h4>
+        <div class="prose">
+          <ul>
+            <li>Coleta mínima: só nome, e-mail e telefone quando informados pelo morador</li>
+            <li>Soft delete em todas as entidades — exclusão lógica preserva integridade</li>
+            <li>Logs de acesso podem ser anonimizados após período configurável</li>
+            <li>Dados pessoais criptografados em repouso (AES-256)</li>
+            <li>Comunicação exclusivamente via HTTPS/TLS 1.3</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEPLOYMENT -->
+    <h3 style="font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; margin-bottom:1.5rem;">Estratégia de Deployment</h3>
+    <div style="display:flex; flex-direction:column; gap:1rem; margin-bottom:3rem;">
+      <div class="stack-item">
+        <div class="stack-icon">🌱</div>
+        <div>
+          <div class="stack-label">Fase 1 — MVP (0–3 meses)</div>
+          <div class="stack-desc">Deploy em Railway ou Render. Banco PostgreSQL gerenciado. Monolito modular para velocidade. CI/CD via GitHub Actions. 1–3 condomínios piloto.</div>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-icon">🚀</div>
+        <div>
+          <div class="stack-label">Fase 2 — Escala (3–12 meses)</div>
+          <div class="stack-desc">Migração para microserviços críticos (Invite, Notification, Audit). RDS na AWS/GCP. Redis ElastiCache. CDN para assets estáticos. 10–50 condomínios.</div>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-icon">🏢</div>
+        <div>
+          <div class="stack-label">Fase 3 — Enterprise (12+ meses)</div>
+          <div class="stack-desc">Kubernetes com auto-scaling. Multi-region para latência. SLA 99.9%. Suporte a hardware integrado (controladores de acesso físico via API). 100+ condomínios.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXTENSIBILIDADE FUTURA -->
+    <h3 style="font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; margin-bottom:1.5rem;">Roadmap Técnico — Extensibilidade</h3>
+    <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+      <span class="feature-pill"><span class="feature-pill-dot"></span>QR Code via biblioteca qrcode.js</span>
+      <span class="feature-pill"><span class="feature-pill-dot"></span>App mobile com Expo/React Native</span>
+      <span class="feature-pill"><span class="feature-pill-dot"></span>Integração com fechaduras inteligentes (MQTT)</span>
+      <span class="feature-pill"><span class="feature-pill-dot"></span>Reconhecimento facial (OpenCV + Lambda)</span>
+      <span class="feature-pill"><span class="feature-pill-dot"></span>Câmera IP com leitura de placa (OCR)</span>
+      <span class="feature-pill"><span class="feature-pill-dot"></span>WhatsApp Business API para envio de convite</span>
+      <span class="feature-pill"><span class="feature-pill-dot"></span>Relatórios PDF automatizados</span>
+      <span class="feature-pill"><span class="feature-pill-dot"></span>Webhook para sistemas de gestão condominial</span>
+      <span class="feature-pill"><span class="feature-pill-dot"></span>SSO para grandes redes de condomínios</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     VERSÃO 04 — CUSTOS
+════════════════════════════════════════════ -->
+<section id="custos" class="version-section section-pad" style="background:var(--dark-2);">
+  <div class="container">
+    <div class="version-label">
+      <span class="version-number">04 — Estimativa de Custos</span>
+      <div class="version-line"></div>
+    </div>
+
+    <div class="section-header">
+      <div class="audience-tag tag-cost">💰 Perspectiva Financeira e de Mercado</div>
+      <h2 class="section-title">Investimento realista.<br>Retorno mensurável.</h2>
+      <p class="section-desc">Estimativas baseadas em mercado brasileiro e internacional, com premissas claras e cenários de escala.</p>
+    </div>
+
+    <!-- DESENVOLVIMENTO INICIAL -->
+    <h3 style="font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; margin-bottom:1.5rem;">Desenvolvimento Inicial — MVP</h3>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem; margin-bottom:3rem;">
+      <div>
+        <div class="cost-main-card">
+          <div style="font-size:11px; text-transform:uppercase; letter-spacing:2px; color:var(--white-dim); margin-bottom:0.8rem; font-family:var(--mono);">Investimento total estimado</div>
+          <div class="cost-value">R$ 35–65K</div>
+          <div class="cost-period">MVP completo com 4–5 meses de desenvolvimento</div>
+        </div>
+        <div class="highlight-box">
+          <strong>Premissas:</strong> Equipe pequena (1 tech lead sênior + 1 fullstack + 1 designer), mercado brasileiro, sem agência, escopo fechado no MVP descrito no PDF.
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:13px; color:var(--white-dim); margin-bottom:1rem; font-weight:600; text-transform:uppercase; letter-spacing:1px;">Breakdown por entregável</div>
+        <div class="cost-line"><span>Backend API + regras de negócio</span><span class="cost-line-amount">R$ 12–18K</span></div>
+        <div class="cost-line"><span>Painel do morador (web)</span><span class="cost-line-amount">R$ 6–10K</span></div>
+        <div class="cost-line"><span>Interface da portaria (fullscreen)</span><span class="cost-line-amount">R$ 4–7K</span></div>
+        <div class="cost-line"><span>Painel admin (síndico / provedor)</span><span class="cost-line-amount">R$ 5–8K</span></div>
+        <div class="cost-line"><span>Banco de dados + autenticação</span><span class="cost-line-amount">R$ 3–5K</span></div>
+        <div class="cost-line"><span>Notificações (SMS + e-mail)</span><span class="cost-line-amount">R$ 2–4K</span></div>
+        <div class="cost-line"><span>Testes + deploy + documentação</span><span class="cost-line-amount">R$ 3–6K</span></div>
+        <div class="cost-line" style="font-weight:700; color:var(--white);">
+          <span style="color:var(--white);">Total</span>
+          <span class="cost-line-amount" style="font-size:16px;">R$ 35–65K</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-bottom:3rem;">
+      <strong>Nota:</strong> O valor de R$10.000 mencionado no documento original é significativamente abaixo do custo de mercado para um sistema como este. Esse orçamento seria viável apenas para um protótipo não-produtivo ou um freelancer juniores com escopo muito restrito. Um MVP sólido, escalável e com conformidade LGPD exige um investimento maior — estimado acima com premissas conservadoras.
+    </div>
+
+    <!-- CUSTO MENSAL SAAS -->
+    <h3 style="font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; margin-bottom:1.5rem;">Custo Mensal SaaS — Operação</h3>
+
+    <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:1.5rem; margin-bottom:3rem;">
+
+      <div style="background:var(--dark-3); border:1px solid var(--border); border-radius:16px; padding:1.5rem;">
+        <div style="font-size:11px; text-transform:uppercase; letter-spacing:2px; color:var(--success); font-weight:700; margin-bottom:1rem; font-family:var(--mono);">Fase MVP — Até 5 condomínios</div>
+        <div style="font-size:2rem; font-weight:800; color:var(--white); letter-spacing:-1px; margin-bottom:0.5rem;">R$ 800<span style="font-size:1rem; color:var(--white-dim); font-weight:400;">/mês</span></div>
+        <div class="cost-line"><span>Hosting (Railway/Render)</span><span class="cost-line-amount">R$ 200</span></div>
+        <div class="cost-line"><span>Banco de dados gerenciado</span><span class="cost-line-amount">R$ 150</span></div>
+        <div class="cost-line"><span>SMS (Twilio ~500 msg)</span><span class="cost-line-amount">R$ 150</span></div>
+        <div class="cost-line"><span>E-mail transacional</span><span class="cost-line-amount">R$ 50</span></div>
+        <div class="cost-line"><span>Monitoramento + logs</span><span class="cost-line-amount">R$ 100</span></div>
+        <div class="cost-line"><span>Backup + suporte</span><span class="cost-line-amount">R$ 150</span></div>
+      </div>
+
+      <div style="background:var(--dark-3); border:1px solid var(--border-orange); border-radius:16px; padding:1.5rem;">
+        <div style="font-size:11px; text-transform:uppercase; letter-spacing:2px; color:var(--orange); font-weight:700; margin-bottom:1rem; font-family:var(--mono);">Crescimento — 20–50 condomínios</div>
+        <div style="font-size:2rem; font-weight:800; color:var(--white); letter-spacing:-1px; margin-bottom:0.5rem;">R$ 3–5K<span style="font-size:1rem; color:var(--white-dim); font-weight:400;">/mês</span></div>
+        <div class="cost-line"><span>Cloud (AWS/GCP)</span><span class="cost-line-amount">R$ 1.200</span></div>
+        <div class="cost-line"><span>RDS + Redis</span><span class="cost-line-amount">R$ 600</span></div>
+        <div class="cost-line"><span>SMS + e-mail escalado</span><span class="cost-line-amount">R$ 800</span></div>
+        <div class="cost-line"><span>CDN + S3</span><span class="cost-line-amount">R$ 200</span></div>
+        <div class="cost-line"><span>Dev/manutenção parcial</span><span class="cost-line-amount">R$ 1.500</span></div>
+        <div class="cost-line"><span>Suporte N1 + SLA</span><span class="cost-line-amount">R$ 700</span></div>
+      </div>
+
+      <div style="background:var(--dark-3); border:1px solid var(--border); border-radius:16px; padding:1.5rem;">
+        <div style="font-size:11px; text-transform:uppercase; letter-spacing:2px; color:var(--info); font-weight:700; margin-bottom:1rem; font-family:var(--mono);">Enterprise — 100+ condomínios</div>
+        <div style="font-size:2rem; font-weight:800; color:var(--white); letter-spacing:-1px; margin-bottom:0.5rem;">R$ 12K+<span style="font-size:1rem; color:var(--white-dim); font-weight:400;">/mês</span></div>
+        <div class="cost-line"><span>Kubernetes + multi-region</span><span class="cost-line-amount">R$ 4.000</span></div>
+        <div class="cost-line"><span>Banco HA + Redis cluster</span><span class="cost-line-amount">R$ 2.000</span></div>
+        <div class="cost-line"><span>Comunicações em escala</span><span class="cost-line-amount">R$ 2.500</span></div>
+        <div class="cost-line"><span>Equipe dedicada (parcial)</span><span class="cost-line-amount">R$ 6.000</span></div>
+        <div class="cost-line"><span>Segurança + compliance</span><span class="cost-line-amount">R$ 1.500</span></div>
+        <div class="cost-line"><span>SLA 99.9% + suporte</span><span class="cost-line-amount">incluso</span></div>
+      </div>
+
+    </div>
+
+    <!-- MODELO RECEITA -->
+    <h3 style="font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; margin-bottom:1.5rem;">Modelo de Receita Sugerido</h3>
+    <div class="pro-table">
+      <table class="pro-table" style="width:100%;">
+        <thead>
+          <tr>
+            <th>Plano</th>
+            <th>Perfil</th>
+            <th>Preço sugerido</th>
+            <th>Unidades</th>
+            <th>Inclui</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Starter</td>
+            <td>Condomínios pequenos</td>
+            <td>R$ 299/mês</td>
+            <td>Até 30 unidades</td>
+            <td>Web app, notificações, auditoria básica</td>
+          </tr>
+          <tr>
+            <td>Profissional</td>
+            <td>Condomínios médios</td>
+            <td>R$ 599/mês</td>
+            <td>Até 100 unidades</td>
+            <td>Tudo do Starter + multi-portaria + relatórios</td>
+          </tr>
+          <tr>
+            <td>Enterprise</td>
+            <td>Redes / Gestoras</td>
+            <td>Sob consulta</td>
+            <td>Ilimitado</td>
+            <td>Tudo + SLA, white-label, integrações custom</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     VERSÃO 05 — MELHORIAS
+════════════════════════════════════════════ -->
+<section id="melhorias" class="version-section section-pad">
+  <div class="container">
+    <div class="version-label">
+      <span class="version-number">05 — Sugestões de Melhoria</span>
+      <div class="version-line"></div>
+    </div>
+
+    <div class="section-header">
+      <div class="audience-tag tag-improve">💡 Análise Crítica e Evolução</div>
+      <h2 class="section-title">Do protótipo<br>ao produto de mercado.</h2>
+      <p class="section-desc">Análise crítica do documento original e sugestões concretas para elevar o projeto a um nível comercialmente competitivo.</p>
+    </div>
+
+    <!-- FRAQUEZAS -->
+    <h3 style="font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; margin-bottom:1.5rem;">⚠️ Pontos fracos identificados no documento original</h3>
+
+    <div class="improvement-item">
+      <div class="improvement-icon">🔢</div>
+      <div>
+        <div class="improvement-title">Token de 6 dígitos numéricos — Espaço muito limitado</div>
+        <div class="improvement-desc">Com apenas 1.000.000 combinações possíveis e tokens de uso único, em um condomínio com alto volume de acessos, a colisão de tokens pode se tornar um problema operacional. O documento não menciona como garantir unicidade eficiente em escala multi-tenant.</div>
+        <span class="improvement-tag tag-weakness">Fraqueza técnica</span>
+        <span class="improvement-tag tag-suggestion">Sugestão: Namespace por condomínio + TTL curto no Redis garante unicidade sem colisões</span>
+      </div>
+    </div>
+
+    <div class="improvement-item">
+      <div class="improvement-icon">🎯</div>
+      <div>
+        <div class="improvement-title">Portaria sem fallback definido</div>
+        <div class="improvement-desc">O documento não especifica o que acontece quando o sistema está offline. Um condomínio sem fallback (modo degradado, acesso via porteiro com código temporário offline) pode ter sua operação completamente travada por uma queda de internet.</div>
+        <span class="improvement-tag tag-weakness">Risco operacional crítico</span>
+        <span class="improvement-tag tag-suggestion">Sugestão: PWA com cache local para validação offline dos últimos N tokens ativos</span>
+      </div>
+    </div>
+
+    <div class="improvement-item">
+      <div class="improvement-icon">👤</div>
+      <div>
+        <div class="improvement-title">Cadastro de convidados sem deduplicação</div>
+        <div class="improvement-desc">O sistema prevê uma lista de "convidados recentes" mas não define regras claras de deduplicação. Um visitante como "João" pode existir duplicado com variações de nome, gerando ruído no histórico.</div>
+        <span class="improvement-tag tag-weakness">UX problemático</span>
+        <span class="improvement-tag tag-suggestion">Sugestão: Busca fuzzy por nome + validação por telefone como identificador principal</span>
+      </div>
+    </div>
+
+    <div class="improvement-item">
+      <div class="improvement-icon">💰</div>
+      <div>
+        <div class="improvement-title">Ausência de modelo de negócio</div>
+        <div class="improvement-desc">O documento descreve um produto técnico sem definir como ele será vendido, precificado ou distribuído. Para um SaaS viável, o modelo de receita, go-to-market e estratégia de crescimento são tão importantes quanto o código.</div>
+        <span class="improvement-tag tag-weakness">Gap estratégico</span>
+        <span class="improvement-tag tag-suggestion">Sugestão: Modelo de assinatura mensal por condomínio com planos escalonados</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- MELHORIAS DE UX -->
+    <h3 style="font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; margin-bottom:1.5rem;">✨ Melhorias de UX e Produto</h3>
+
+    <div class="improvement-item">
+      <div class="improvement-icon">📱</div>
+      <div>
+        <div class="improvement-title">Convite por link de WhatsApp — prioridade máxima</div>
+        <div class="improvement-desc">No contexto brasileiro, o WhatsApp é o canal de comunicação dominante. O produto deve priorizar o envio de convites diretamente via link wa.me com o código embutido na mensagem. Isso reduz o atrito para zero — o visitante recebe, lê e chega. Sem instalar nada.</div>
+        <span class="improvement-tag tag-suggestion">Quick win de alto impacto</span>
+      </div>
+    </div>
+
+    <div class="improvement-item">
+      <div class="improvement-icon">⏰</div>
+      <div>
+        <div class="improvement-title">Templates de convite por situação</div>
+        <div class="improvement-desc">Permitir que o morador salve configurações de convite padrão: "Entregador — 30 minutos", "Diarista — toda terça das 9h às 18h", "Visita de final de semana". Isso reduz drasticamente o tempo de criação e melhora a adesão.</div>
+        <span class="improvement-tag tag-suggestion">Reduz fricção em 60%</span>
+        <span class="improvement-tag tag-future">Evolução futura</span>
+      </div>
+    </div>
+
+    <div class="improvement-item">
+      <div class="improvement-icon">🔁</div>
+      <div>
+        <div class="improvement-title">Convites recorrentes</div>
+        <div class="improvement-desc">Para prestadores regulares (diarista, personal trainer), o sistema deveria permitir convites de recorrência semanal/mensal, gerados automaticamente. O documento atual só trata tokens de uso único sem prever esse padrão comum.</div>
+        <span class="improvement-tag tag-suggestion">Necessidade real de 70% dos moradores</span>
+      </div>
+    </div>
+
+    <div class="improvement-item">
+      <div class="improvement-icon">🏠</div>
+      <div>
+        <div class="improvement-title">App progressivo (PWA) como primeiro passo mobile</div>
+        <div class="improvement-desc">O documento menciona "aplicativo móvel (futuro)" como algo distante. Na prática, um PWA (Progressive Web App) pode entregar 90% da experiência mobile em 2–4 semanas adicionais ao MVP, sem publicar na App Store. Deve ser prioridade antes do app nativo.</div>
+        <span class="improvement-tag tag-suggestion">Alto impacto, baixo custo</span>
+      </div>
+    </div>
+
+    <div class="improvement-item">
+      <div class="improvement-icon">📸</div>
+      <div>
+        <div class="improvement-title">Foto do visitante no momento da entrada</div>
+        <div class="improvement-desc">A portaria poderia capturar uma foto do visitante no momento da validação do código (com câmera integrada). Isso adiciona uma camada de segurança física sem complexidade para o morador, e é especialmente relevante para entregadores e prestadores.</div>
+        <span class="improvement-tag tag-future">Fase 2</span>
+        <span class="improvement-tag tag-suggestion">Aumenta percepção de segurança drasticamente</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- IDEIAS QUE AUMENTAM VALOR PERCEBIDO -->
+    <h3 style="font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; margin-bottom:1.5rem;">🚀 Ideias que aumentam o valor percebido</h3>
+
+    <div class="card-grid-2">
+      <div class="card">
+        <div style="font-size:1.5rem; margin-bottom:0.8rem;">🤝</div>
+        <h4 style="font-weight:700; margin-bottom:0.5rem;">White-label para gestoras</h4>
+        <p style="font-size:13px; color:var(--white-dim); line-height:1.5;">Permitir que administradoras de condomínios (que gerenciam dezenas de prédios) revendam o produto com sua própria marca. Abre um canal B2B2C extremamente lucrativo sem necessidade de vendas diretas.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem; margin-bottom:0.8rem;">🔗</div>
+        <h4 style="font-weight:700; margin-bottom:0.5rem;">Integração com sistemas existentes</h4>
+        <p style="font-size:13px; color:var(--white-dim); line-height:1.5;">Webhook e API pública para integração com sistemas de gestão condominial já usados no mercado (Condomob, Acolweb, etc.). Elimina resistência à adoção por parte de síndicos que já têm sistema.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem; margin-bottom:0.8rem;">📊</div>
+        <h4 style="font-weight:700; margin-bottom:0.5rem;">Relatório mensal automático para o síndico</h4>
+        <p style="font-size:13px; color:var(--white-dim); line-height:1.5;">Um e-mail automático no fim de cada mês com: total de acessos, pico de movimentação, unidades mais ativas, tentativas negadas. Cria valor percebido passivo sem que o síndico precise acessar o sistema.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem; margin-bottom:0.8rem;">🏆</div>
+        <h4 style="font-weight:700; margin-bottom:0.5rem;">Certificado de conformidade LGPD</h4>
+        <p style="font-size:13px; color:var(--white-dim); line-height:1.5;">Emitir para cada condomínio cliente um documento comprovando conformidade com LGPD. Isso é um diferencial comercial real — síndicos têm responsabilidade legal sobre dados dos moradores.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div style="display:flex; flex-direction:column; align-items:center; gap:1.2rem;">
+    <!-- TC Logo -->
+    <img src="./svg/TC LOGO.svg" alt="Descrição da imagem" width="200" height="200" style="flex-shrink:0;">
+
+    <div>
+      <div style="font-size:1.4rem; font-weight:800; letter-spacing:-0.8px; margin-bottom:2px;">
+        <span style="color:var(--white);">Egogero</span> <span style="color:var(--orange);">Condominium</span>
+      </div>
+      <div style="font-size:11px; color:var(--white-dim); letter-spacing:2px; text-transform:uppercase; font-family:var(--mono);">by Teagar Company</div>
+    </div>
+
+    <div style="width:1px; height:0; border-top: 1px solid var(--border); width:120px;"></div>
+
+    <div style="font-size:12px; color:var(--white-dim); line-height:1.8; text-align:center; max-width:480px;">
+      <strong style="color:var(--white);">Teagar Company</strong> — Soluções tecnológicas para automação de processos e gestão operacional.<br>
+      Ajudando empresas e instituições a ganharem eficiência, controle e escalabilidade.
+    </div>
+
+    <p style="font-size:11px; color:rgba(245,243,239,0.25); letter-spacing:0.3px;">Documento de produto elaborado por Thiago Cerqueira · Teagar Company © 2025</p>
+    <p style="font-size:10px; color:rgba(245,243,239,0.18); font-family:var(--mono); letter-spacing:1px;">"EGO GERO" — Latim · <em>Eu administro</em></p>
+  </div>
+</footer>
 
 </body>
 </html>
